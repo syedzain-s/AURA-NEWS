@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA News | Intelligence Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="obsidian-mode">
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="floating-news-border">
+        <div class="ticker-text">
+            LIVE INTEL FEED ACTIVE • GLOBAL SYSTEM ENCRYPTED • SECURE CONNECTION ESTABLISHED • DATA STREAMING...
+        </div>
+    </div>
+
+    <nav id="left-nav" class="side-nav left-nav">
+        <div class="nav-header">
+            <h3>APPEARANCE</h3>
+            <span class="close-nav" onclick="toggleNav('left-nav')">×</span>
+        </div>
+        <ul class="nav-links">
+            <li onclick="setMode('obsidian-mode')"><i class="fas fa-moon"></i> Obsidian</li>
+            <li onclick="setMode('newspaper-mode')"><i class="fas fa-paper-plane"></i> Newspaper</li>
+            <li onclick="setMode('royal-mode')"><i class="fas fa-crown"></i> Royal</li>
+        </ul>
+    </nav>
+
+    <nav id="right-nav" class="side-nav right-nav">
+        <div class="nav-header">
+            <span class="close-nav" onclick="toggleNav('right-nav')">×</span>
+            <h3>FEED NAVIGATOR</h3>
+        </div>
+        <ul class="nav-links">
+            <li onclick="quickSearch('Trending')"><i class="fas fa-bolt"></i> Trending</li>
+            <li onclick="quickSearch('Business')"><i class="fas fa-chart-line"></i> Business</li>
+            <li onclick="quickSearch('Tech')"><i class="fas fa-microchip"></i> Technology</li>
+            <li onclick="quickSearch('Science')"><i class="fas fa-user-astronaut"></i> Science</li>
+        </ul>
+    </nav>
+
+    <header class="main-header">
+        <div class="header-left">
+            <div class="brand-block">
+                <div class="company-tag">AURA <span>NEWS</span></div>
+                <div class="menu-trigger" onclick="toggleNav('left-nav')">
+                    <div class="hamburger"></div>
+                    <span>APPEARANCE</span>
+                </div>
+                <div id="full-date" class="date-display-sub">THURSDAY, DEC 25, 2025</div>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="feed-trigger" onclick="toggleNav('right-nav')">
+                <span>FEED NAVIGATOR</span>
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-center">
+        <h1 id="dynamic-greeting">Good Afternoon</h1>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Explore intelligence..." autocomplete="off">
+                <button onclick="handleSearch()">Explore</button>
+            </div>
+        </div>
+        
+        <div class="category-row-6x1">
+            <span onclick="quickSearch('Gaming')">-Gaming</span>
+            <span onclick="quickSearch('News')">-News</span>
+            <span onclick="quickSearch('Health')">-Health</span>
+            <span onclick="quickSearch('Tech')">-Tech</span>
+            <span onclick="quickSearch('Science')">-Science</span>
+            <span onclick="quickSearch('Travel')">-Travel</span>
+        </div>
+    </div>
+
+    <main id="news-grid" class="news-grid"></main>
+
+    <footer class="pro-footer">
+        <div class="footer-line"></div>
+        <p>© 2025 ZAIN-S | <span class="footer-tag">GLOBAL INTELLIGENCE SYSTEM</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

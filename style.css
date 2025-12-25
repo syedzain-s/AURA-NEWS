@@ -1,0 +1,136 @@
+* { margin: 0; padding: 0; box-sizing: border-box; border: none; outline: none; cursor: none; }
+
+:root { --accent: #8b5cf6; --bg: #0b0b0b; --text: #fff; }
+.obsidian-mode { --bg: #0b0b0b; --text: #fff; --accent: #8b5cf6; }
+.newspaper-mode { --bg: #f4f1ea; --text: #1a1a1a; --accent: #333; }
+.royal-mode { --bg: #0a041a; --text: #e0d7ff; --accent: #ffd700; }
+
+body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* Custom Cursor */
+.cursor-dot { width: 6px; height: 6px; background-color: var(--accent); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; }
+.cursor-outline { width: 30px; height: 30px; border: 2px solid var(--accent); position: fixed; border-radius: 50%; z-index: 9998; pointer-events: none; transition: transform 0.1s ease-out; }
+
+/* Ticker */
+.floating-news-border { width: 100%; height: 30px; background: var(--accent); color: #fff; display: flex; align-items: center; font-family: 'JetBrains Mono'; font-size: 0.65rem; }
+.ticker-text { white-space: nowrap; animation: ticker 40s linear infinite; }
+@keyframes ticker { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+/* Header & Brand Logic */
+.main-header { padding: 40px 60px; display: flex; justify-content: space-between; align-items: flex-start; }
+.brand-block { display: flex; flex-direction: column; gap: 8px; }
+
+/* Bolder and Larger AURA NEWS */
+.company-tag { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 3.5rem; /* Increased size */
+    font-weight: 900; 
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+.company-tag span { color: var(--accent); }
+
+/* Appearance Trigger below AURA NEWS */
+.menu-trigger { 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    opacity: 0.8;
+    margin-top: 5px;
+}   
+.hamburger { width: 18px; height: 2px; background: currentColor; box-shadow: 0 5px 0 currentColor; }
+
+.date-display-sub { font-family: 'JetBrains Mono'; font-size: 0.65rem; opacity: 0.4; letter-spacing: 1px; }
+
+/* Hero Center */
+.hero-center { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+#dynamic-greeting { font-size: 4rem; font-weight: 800; margin-bottom: 30px; letter-spacing: -3px; }
+.search-box { display: flex; width: 600px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; padding: 6px; }
+.search-box input { flex: 1; background: transparent; color: inherit; padding-left: 25px; font-size: 1.1rem; }
+.search-box button { background: var(--accent); color: #fff; padding: 12px 35px; border-radius: 50px; font-weight: 800; }
+
+.category-row-6x1 { margin-top: 30px; display: flex; gap: 30px; }
+.category-row-6x1 span { font-family: 'JetBrains Mono'; font-size: 0.8rem; opacity: 0.4; }
+
+/* Side Navs */
+.side-nav { position: fixed; top: 0; width: 300px; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; transition: 0.4s; padding: 40px; }
+.left-nav { left: -320px; border-right: 1px solid var(--accent); }
+.right-nav { right: -320px; border-left: 1px solid var(--accent); }
+.side-nav.active { left: 0; }
+.right-nav.active { right: 0; }
+
+/* Footer */
+.pro-footer { padding: 60px 0; text-align: center; font-family: 'JetBrains Mono'; }
+.footer-line { width: 30px; height: 1px; background: var(--accent); margin: 0 auto 20px; opacity: 0.3; }
+.pro-footer p { font-size: 0.6rem; letter-spacing: 4px; opacity: 0.4; }
+.footer-tag { color: var(--accent); font-weight: 800; }
+
+/* Cards */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; width: 90%; margin: 0 auto 100px; }
+.card { background: rgba(255,255,255,0.02); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+
+/* --- PASTE AT THE BOTTOM OF STYLE.CSS --- */
+
+.share-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.share-trigger {
+    color: var(--text);
+    opacity: 0.5;
+    font-size: 1.2rem;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+.share-trigger:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+.share-menu {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: rgba(15, 15, 15, 0.98);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 10px;
+    display: none; 
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+.share-menu.active {
+    display: flex;
+    animation: shareFadeIn 0.2s ease-out;
+}
+
+@keyframes shareFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.share-menu a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono';
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+
+.share-menu a:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
